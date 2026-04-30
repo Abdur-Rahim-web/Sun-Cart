@@ -3,12 +3,12 @@ import React from 'react';
 import hero1 from '@/assets/hero1.jpg';
 import hero2 from '@/assets/hero2.jpg';
 import Link from 'next/link';
-import { Button, Chip } from '@heroui/react';
+import { Button } from '@heroui/react';
 
 const Banner = () => {
     return (
         <div className="w-full">
-            <div className="relative h-[70vh] md:h-[90vh]">
+            <div className="relative h-[70vh] md:h-[140vh]">
                 <Image
                     src={hero1}
                     alt="Summer Banner"
