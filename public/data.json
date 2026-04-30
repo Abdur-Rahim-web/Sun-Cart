@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "name": "UV Protection Sunglasses",
+    "brand": "SunShade",
+    "price": 15,
+    "rating": 4.7,
+    "stock": 10,
+    "description": "Stylish UV protection sunglasses perfect for summer outings and beach days.",
+    "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083",
+    "category": "Accessories"
+  },
+  {
+    "id": 2,
+    "name": "Summer Floral Dress",
+    "brand": "BloomWear",
+    "price": 25,
+    "rating": 4.5,
+    "stock": 8,
+    "description": "Lightweight floral dress designed to keep you cool and fashionable during hot days.",
+    "image": "https://images.unsplash.com/photo-1521334884684-d80222895322",
+    "category": "Clothing"
+  },
+  {
+    "id": 3,
+    "name": "SPF 50 Sunscreen Lotion",
+    "brand": "SkinGuard",
+    "price": 12,
+    "rating": 4.8,
+    "stock": 15,
+    "description": "Protect your skin from harmful UV rays with this high-performance sunscreen.",
+    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348",
+    "category": "Skincare"
+  },
+  {
+    "id": 4,
+    "name": "Beach Straw Hat",
+    "brand": "SunnyStyle",
+    "price": 10,
+    "rating": 4.4,
+    "stock": 12,
+    "description": "Classic straw hat for sun protection and a trendy summer look.",
+    "image": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c",
+    "category": "Accessories"
+  },
+  {
+    "id": 5,
+    "name": "Summer Sandals",
+    "brand": "WalkEasy",
+    "price": 18,
+    "rating": 4.3,
+    "stock": 9,
+    "description": "Comfortable and breathable sandals perfect for everyday summer wear.",
+    "image": "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519",
+    "category": "Footwear"
+  },
+  {
+    "id": 6,
+    "name": "Beach Tote Bag",
+    "brand": "CarryAll",
+    "price": 20,
+    "rating": 4.6,
+    "stock": 7,
+    "description": "Spacious and stylish tote bag for all your beach essentials.",
+    "image": "https://images.unsplash.com/photo-1585386959984-a41552262c5d",
+    "category": "Accessories"
+  }
+]
