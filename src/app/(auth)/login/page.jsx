@@ -1,19 +1,45 @@
 "use client"
+import { authClient } from '@/lib/auth-client';
 import { Button, Description, FieldError, Form, Input, Label, TextField } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { FaGoogle } from 'react-icons/fa6';
 
 const LogInPage = () => {
 
-    const {register,handleSubmit} = useForm()
+    const { register, handleSubmit } = useForm()
 
-    const handleLoginFunction = (data) => {
-       
+    const handleLoginFunction = async(data) => {
 
         console.log(data)
-        
+
+        const { email, password, name, photo } = data;
+
+        const { data: res, error } = await authClient.signIn.email({
+            name: name,
+            email: email,
+            password: password,
+            rememberMe: true,
+            callbackURL: "/",
+        });
+        console.log(res, error)
+
+        if (error) {
+            alert(error.message)
+        }
+
+        if (res) {
+            alert('Login successfully')
+        }
+
     };
+
+    const handleGoogleSing = async() => {
+        const data = await authClient.signIn.social({
+    provider: "google",
+  });
+    }
 
     return (
         <div className='container mx-auto min-h-[80vh] flex justify-center items-center bg-slate-100'>
@@ -33,7 +59,7 @@ const LogInPage = () => {
                         }}
                     >
                         <Label>Email</Label>
-                        <Input placeholder="Enter your email" {...register('email')}/>
+                        <Input placeholder="Enter your email" {...register('email')} />
                         <FieldError />
                     </TextField>
                     <TextField
@@ -55,21 +81,25 @@ const LogInPage = () => {
                         }}
                     >
                         <Label>Password</Label>
-                        <Input placeholder="Enter your password" {...register('password')}/>
+                        <Input placeholder="Enter your password" {...register('password')} />
                         <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
                         <FieldError />
                     </TextField>
-                    
-                        <Button  type="submit" className="w-full">
-                            Login
-                        </Button>
-                    
+
+                    <Button type="submit" className="w-full">
+                        Login
+                    </Button>
+
                 </Form>
 
                 <p className='mt-4'>
-                    Don't have an account?{" "}
+                    Do not have an account?{" "}
                     <Link href="/register" className='text-blue-500'>Register</Link>
                 </p>
+
+                <p className='m-4 text-center'>or</p>
+
+                <Button onClick={handleGoogleSing} className="w-full rounded-2xl p-3 bg-gray-100 text-blue-500"><FaGoogle /> Login with google</Button>
             </div>
         </div>
     );

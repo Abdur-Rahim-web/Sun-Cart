@@ -1,19 +1,42 @@
 "use client"
+import { authClient } from '@/lib/auth-client';
 import { Button, Description, FieldError, Form, Input, Label, TextField } from '@heroui/react';
-import Link from 'next/link';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const RegisterPage = () => {
 
-    const {register,handleSubmit,watch,
-    formState: { errors },} = useForm()
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm();
 
-    const handleRegisterFunction = (data) => {
-       
-
+    const handleRegisterFunction = async(data) => {
         console.log(data)
-        
+
+        const { email, password, name, photo } = data;
+
+        const { data:res, error } = await authClient.signUp.email({
+            name: name,
+            email: email,
+            password: password,
+            image: photo,
+            callbackURL: "/login",
+        });
+        console.log(res,error)
+
+        if(error){
+            alert(error.message)
+        }
+
+        if(res){
+            alert('Login successfully')
+        }
+
+
+
     };
 
     return (
@@ -24,13 +47,13 @@ const RegisterPage = () => {
                 <Form className="flex w-96 flex-col gap-4" onSubmit={handleSubmit(handleRegisterFunction)}>
                     <TextField isRequired>
                         <Label>Name</Label>
-                        <Input placeholder="Enter your name" {...register('name',{required:'Name field is required'})}/>
+                        <Input placeholder="Enter your name" {...register('name', { required: 'Name field is required' })} />
                         {errors.name && (<p className='text-red-500'>{errors.name.message}</p>)}
                     </TextField>
 
                     <TextField isRequired>
                         <Label>Photo URL</Label>
-                        <Input placeholder="Enter your photo url" {...register('photo',{required:'Photo URL field is required'})}/>
+                        <Input placeholder="Enter your photo url" {...register('photo', { required: 'Photo URL field is required' })} />
                         {errors.photo && (<p className='text-red-500'>{errors.photo.message}</p>)}
                     </TextField>
 
@@ -46,7 +69,7 @@ const RegisterPage = () => {
                         }}
                     >
                         <Label>Email</Label>
-                        <Input placeholder="Enter your email" {...register('email')}/>
+                        <Input placeholder="Enter your email" {...register('email')} />
                         <FieldError />
                     </TextField>
                     <TextField
@@ -68,15 +91,15 @@ const RegisterPage = () => {
                         }}
                     >
                         <Label>Password</Label>
-                        <Input placeholder="Enter your password" {...register('password')}/>
+                        <Input placeholder="Enter your password" {...register('password')} />
                         <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
                         <FieldError />
                     </TextField>
-                    
-                        <Button  type="submit" className="w-full">
-                            Register
-                        </Button>
-                    
+
+                    <Button type="submit" className="w-full">
+                        Register
+                    </Button>
+
                 </Form>
 
             </div>

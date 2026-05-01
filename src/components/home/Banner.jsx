@@ -8,7 +8,7 @@ import { Button } from '@heroui/react';
 const Banner = () => {
     return (
         <div className="w-full">
-            <div className="relative h-[70vh] md:h-[90vh]">
+            <div className="relative h-[50vh] md:h-[180vh]">
                 <Image
                     src={hero1}
                     alt="Summer Banner"
