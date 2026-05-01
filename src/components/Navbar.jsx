@@ -16,7 +16,8 @@ const Navbar = () => {
                         <li><Link href="/profile">My Profile</Link></li>
                     </ul>
                     <ul className="flex items-center gap-4">
-                        <li><Button>Sign Up</Button></li>
+                        <li><Link href="/login"><Button>Login</Button></Link></li>
+                        <li><Link href="/register "><Button>Register </Button></Link></li>
                     </ul>
                 </header>
             </nav>
