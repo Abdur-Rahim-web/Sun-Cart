@@ -10,7 +10,7 @@ const LogInPage = () => {
 
     const { register, handleSubmit } = useForm()
 
-    const handleLoginFunction = async(data) => {
+    const handleLoginFunction = async (data) => {
 
         console.log(data)
 
@@ -35,10 +35,10 @@ const LogInPage = () => {
 
     };
 
-    const handleGoogleSing = async() => {
+    const handleGoogleSingIn = async () => {
         const data = await authClient.signIn.social({
-    provider: "google",
-  });
+            provider: "google",
+        });
     }
 
     return (
@@ -99,7 +99,7 @@ const LogInPage = () => {
 
                 <p className='m-4 text-center'>or</p>
 
-                <Button onClick={handleGoogleSing} className="w-full rounded-2xl p-3 bg-gray-100 text-blue-500"><FaGoogle /> Login with google</Button>
+                <Button onClick={handleGoogleSingIn} className="w-full rounded-2xl p-3 bg-gray-100 text-blue-500"><FaGoogle /> Login with google</Button>
             </div>
         </div>
     );

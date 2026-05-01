@@ -8,7 +8,7 @@ import { Button } from '@heroui/react';
 const Banner = () => {
     return (
         <div className="w-full">
-            <div className="relative h-[50vh] md:h-[180vh]">
+            <div className="relative h-[50vh] md:h-[90vh]">
                 <Image
                     src={hero1}
                     alt="Summer Banner"
@@ -23,7 +23,7 @@ const Banner = () => {
 
                 <p className='absolute bottom-30 left-90 font-bold text-2xl text-white'>Discover sunglasses, outfits, and skincare made for your perfect summer.</p>
 
-                <Link href={''}><Button className=' absolute bottom-15 left-170 bg-sky-500'>Explore Collection</Button></Link>
+                <Link href={'/products'}><Button className=' absolute bottom-15 left-170 bg-sky-500'>Explore Collection</Button></Link>
 
             </div>
 

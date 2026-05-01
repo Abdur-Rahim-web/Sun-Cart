@@ -1,8 +1,10 @@
 "use client"
 import { authClient } from '@/lib/auth-client';
 import { Button, Description, FieldError, Form, Input, Label, TextField } from '@heroui/react';
+import Link from 'next/link';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { FaGoogle } from 'react-icons/fa6';
 
 const RegisterPage = () => {
 
@@ -35,14 +37,18 @@ const RegisterPage = () => {
             alert('Login successfully')
         }
 
-
-
     };
 
+
+    const handleGoogleSingUp = async () => {
+            const data = await authClient.signIn.social({
+                provider: "google",
+            });
+        }
     return (
         <div className='container mx-auto min-h-[80vh] flex justify-center items-center bg-slate-100'>
             <div className='p-8 rounded-2xl bg-white'>
-                <h2 className='font-bold text-2xl text-center mb-5'>Login Your Account</h2>
+                <h2 className='font-bold text-2xl text-center mb-5'>Register Your Account</h2>
 
                 <Form className="flex w-96 flex-col gap-4" onSubmit={handleSubmit(handleRegisterFunction)}>
                     <TextField isRequired>
@@ -101,6 +107,15 @@ const RegisterPage = () => {
                     </Button>
 
                 </Form>
+
+                <p className='mt-4'>
+                    Already Registered account?{" "}
+                    <Link href="/login" className='text-blue-500'>Login</Link>
+                </p>
+
+                <p className='m-4 text-center'>or</p>
+
+                <Button onClick={handleGoogleSingUp} className="w-full rounded-2xl p-3 bg-gray-100 text-blue-500"><FaGoogle /> Register with google</Button>
 
             </div>
         </div>
