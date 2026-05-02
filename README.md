@@ -1,37 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌞 SunCart – Summer Essentials Store
 
-## Getting Started
+## 🔗 Live Website
 
-First, run the development server:
+👉 https://sun-cart-iota.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 📌 Project Purpose
+
+SunCart is a modern summer-themed eCommerce web application where users can explore and purchase seasonal products like sunglasses, outfits, skincare, and beach accessories. The platform focuses on providing a smooth user experience with authentication, product browsing, and responsive design.
+
+---
+
+## 🚀 Key Features
+
+* 🏠 **Home Page**
+
+  * Hero Banner with summer offers
+  * Popular Products section
+  * Summer Care Tips
+  * Top Brands showcase
+
+* 🛍️ **Product System**
+
+  * Dynamic product listing from JSON data
+  * Product Details page (Protected Route)
+  * View detailed product information
+
+* 🔐 **Authentication**
+
+  * Email & Password Login/Register
+  * Google Social Login
+  * Secure user session using BetterAuth
+
+* 👤 **User Profile**
+
+  * View user info (name, email, photo)
+  * Update profile information
+
+* 📱 **Responsive Design**
+
+  * Fully responsive for mobile, tablet, and desktop
+
+* ⚡ **Performance**
+
+  * Optimized images
+  * Fast loading UI
+
+---
+
+## 🧩 Technologies Used
+
+* ⚛️ Next.js (App Router)
+* 🎨 Tailwind CSS
+* 💎 HeroUI
+* 🔐 BetterAuth
+* 📦 React Hook Form
+* 🎞️ Animate.css
+* ⭐ React Icons
+
+---
+
+## 📁 Project Structure (Basic)
+
+```
+/app
+  /products
+    /[id]
+  /login
+  /register
+  /my-profile
+/components
+/public
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🔒 Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env.local` file and add your secret keys:
 
-## Learn More
+```
+NEXT_PUBLIC_AUTH_URL=your_auth_url
+AUTH_SECRET=your_secret_key
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ⚙️ Installation & Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+git clone https://github.com/Abdur-Rahim-web/Sun-Cart
+cd Sun-Cart
+npm install
+npm run dev
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌟 Future Improvements
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# Sun-Cart
+* Add cart & checkout system
+* Add product filtering & search
+* Add order history
+* Add dark mode
+
+---
+
+## 🙌 Author
+
+Developed by Abdur Rahim

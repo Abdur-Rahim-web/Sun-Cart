@@ -1,9 +1,12 @@
+"use client"
+import Lottie from 'lottie-react';
 import Link from 'next/link';
 import React from 'react';
 import { BiLogoGmail } from 'react-icons/bi';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { FaFacebook, FaInstagram, FaLocationArrow, FaSun, FaTwitch, FaXTwitter } from 'react-icons/fa6';
 import { IoLocationSharp } from 'react-icons/io5';
+import animationData from "@/assets/sun.json";
 
 const Footer = () => {
     return (
@@ -12,7 +15,7 @@ const Footer = () => {
                 <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-8">
 
                     <div>
-                        <h2 className="text-2xl font-bold flex flex-row text-orange-500 justify-start items-center gap-2">SunCart <FaSun /></h2>
+                        <h2 className="text-2xl font-bold flex flex-row text-orange-500 justify-start items-center gap-2">SunCart <Lottie animationData={animationData} loop /></h2>
                         <p className="mt-3 text-sm">
                             Your go-to store for summer essentials. Stay stylish, stay cool.
                         </p>

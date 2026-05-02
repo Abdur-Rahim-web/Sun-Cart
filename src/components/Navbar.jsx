@@ -1,10 +1,12 @@
 "use client"
 import { authClient } from '@/lib/auth-client';
 import { Button, Spinner } from '@heroui/react';
+import Lottie from 'lottie-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { FaSun } from 'react-icons/fa';
+import animationData from "@/assets/sun.json";
+
 
 const Navbar = () => {
     const { data: session, isPending } = authClient.useSession();
@@ -17,7 +19,7 @@ const Navbar = () => {
             <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
                 <header className="flex h-16 items-center justify-between px-6">
                     <div className="flex items-center gap-3">
-                        <h2 className="text-2xl font-bold flex flex-row text-orange-500 justify-start items-center gap-2">SunCart <FaSun /></h2>
+                        <h2 className="text-2xl font-bold flex flex-row text-orange-500 justify-start items-center gap-2">SunCart <Lottie animationData={animationData} loop /></h2>
                     </div>
                     <ul className="flex items-center gap-4">
                         <li><Link href="/">Home</Link></li>
