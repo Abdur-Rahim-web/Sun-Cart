@@ -1,10 +1,15 @@
+"use client"
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 
-const NavLink = () => {
+const NavLink = ({href, children}) => {
+
+    const pathName = usePathname();
+
+    const isActive = href === pathName;
     return (
-        <div>
-            
-        </div>
+        <Link href={href} className={`${isActive && 'text-green-500'}`}>{children}</Link>
     );
 };
 

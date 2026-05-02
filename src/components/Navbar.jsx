@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import animationData from "@/assets/sun.json";
+import NavLink from './NavLink';
 
 
 const Navbar = () => {
@@ -22,9 +23,9 @@ const Navbar = () => {
                         <h2 className="text-2xl font-bold flex flex-row text-orange-500 justify-start items-center gap-2">SunCart <Lottie animationData={animationData} loop /></h2>
                     </div>
                     <ul className="flex items-center gap-4">
-                        <li><Link href="/">Home</Link></li>
-                        <li><Link href="/products">Products</Link></li>
-                        <li><Link href="/profile">My Profile</Link></li>
+                        <li><NavLink href="/">Home</NavLink></li>
+                        <li><NavLink href="/products">Products</NavLink></li>
+                        <li><NavLink href="/profile">My Profile</NavLink></li>
                     </ul>
                     {isPending ? (<Spinner />) : user ? (<ul className="flex items-center gap-4">
 
