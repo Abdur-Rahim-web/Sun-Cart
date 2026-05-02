@@ -1,122 +1,120 @@
-"use client"
-import { authClient } from '@/lib/auth-client';
-import { Button, Description, FieldError, Form, Input, Label, TextField } from '@heroui/react';
-import Link from 'next/link';
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { FaGoogle } from 'react-icons/fa6';
+"use client";
+import { authClient } from "@/lib/auth-client";
+import { Button, Description, Form, Input, Label, TextField } from "@heroui/react";
+import Link from "next/link";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { FaGoogle } from "react-icons/fa6";
 
 const RegisterPage = () => {
+    const router = useRouter();
 
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm();
 
-    const handleRegisterFunction = async(data) => {
-        console.log(data)
-
+    const handleRegisterFunction = async (data) => {
         const { email, password, name, photo } = data;
 
-        const { data:res, error } = await authClient.signUp.email({
-            name: name,
-            email: email,
-            password: password,
+        const { data: res, error } = await authClient.signUp.email({
+            name,
+            email,
+            password,
             image: photo,
-            callbackURL: "/login",
         });
-        console.log(res,error)
 
-        if(error){
-            alert(error.message)
+        if (error) {
+            alert(error.message);
+            return;
         }
 
-        if(res){
-            alert('Login successfully')
+        if (res) {
+            alert("Register successfully");
+            router.push("/login");
         }
-
     };
 
+    const handleGoogleSignUp = async () => {
+        await authClient.signIn.social({
+            provider: "google",
+            callbackURL: "/", 
+        });
+    };
 
-    const handleGoogleSingUp = async () => {
-            const data = await authClient.signIn.social({
-                provider: "google",
-            });
-        }
     return (
-        <div className='container mx-auto min-h-[80vh] flex justify-center items-center bg-slate-100'>
-            <div className='p-8 rounded-2xl bg-white'>
-                <h2 className='font-bold text-2xl text-center mb-5'>Register Your Account</h2>
+        <div className="container mx-auto min-h-[80vh] flex justify-center items-center bg-slate-100">
+            <div className="p-8 rounded-2xl bg-white my-10">
+                <h2 className="font-bold text-2xl text-center mb-5">
+                    Register Your Account
+                </h2>
 
                 <Form className="flex w-96 flex-col gap-4" onSubmit={handleSubmit(handleRegisterFunction)}>
                     <TextField isRequired>
                         <Label>Name</Label>
-                        <Input placeholder="Enter your name" {...register('name', { required: 'Name field is required' })} />
-                        {errors.name && (<p className='text-red-500'>{errors.name.message}</p>)}
+                        <Input {...register("name", { required: "Name is required" })} />
+                        {errors.name && <p className="text-red-500">{errors.name.message}</p>}
                     </TextField>
 
                     <TextField isRequired>
                         <Label>Photo URL</Label>
-                        <Input placeholder="Enter your photo url" {...register('photo', { required: 'Photo URL field is required' })} />
-                        {errors.photo && (<p className='text-red-500'>{errors.photo.message}</p>)}
+                        <Input {...register("photo", { required: "Photo URL is required" })} />
+                        {errors.photo && <p className="text-red-500">{errors.photo.message}</p>}
                     </TextField>
 
-                    <TextField
-                        isRequired
-                        name="email"
-                        type="email"
-                        validate={(value) => {
-                            if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
-                                return "Please enter a valid email address";
-                            }
-                            return null;
-                        }}
-                    >
+                    <TextField isRequired>
                         <Label>Email</Label>
-                        <Input placeholder="Enter your email" {...register('email')} />
-                        <FieldError />
+                        <Input
+                            type="email"
+                            {...register("email", {
+                                required: "Email is required",
+                                pattern: {
+                                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                    message: "Invalid email",
+                                },
+                            })}
+                        />
+                        {errors.email && <p className="text-red-500">{errors.email.message}</p>}
                     </TextField>
-                    <TextField
-                        isRequired
-                        minLength={8}
-                        name="password"
-                        type="password"
-                        validate={(value) => {
-                            if (value.length < 8) {
-                                return "Password must be at least 8 characters";
-                            }
-                            if (!/[A-Z]/.test(value)) {
-                                return "Password must contain at least one uppercase letter";
-                            }
-                            if (!/[0-9]/.test(value)) {
-                                return "Password must contain at least one number";
-                            }
-                            return null;
-                        }}
-                    >
+
+                    <TextField isRequired>
                         <Label>Password</Label>
-                        <Input placeholder="Enter your password" {...register('password')} />
-                        <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
-                        <FieldError />
+                        <Input
+                            type="password"
+                            {...register("password", {
+                                required: "Password is required",
+                                minLength: {
+                                    value: 8,
+                                    message: "Minimum 8 characters",
+                                },
+                            })}
+                        />
+                        <Description>Must be at least 8 characters</Description>
+                        {errors.password && <p className="text-red-500">{errors.password.message}</p>}
                     </TextField>
 
                     <Button type="submit" className="w-full">
                         Register
                     </Button>
-
                 </Form>
 
-                <p className='mt-4'>
-                    Already Registered account?{" "}
-                    <Link href="/login" className='text-blue-500'>Login</Link>
+                <p className="mt-4">
+                    Already have an account?{" "}
+                    <Link href="/login" className="text-blue-500">
+                        Login
+                    </Link>
                 </p>
 
-                <p className='m-4 text-center'>or</p>
+                <p className="m-4 text-center">or</p>
 
-                <Button onClick={handleGoogleSingUp} className="w-full rounded-2xl p-3 bg-gray-100 text-blue-500"><FaGoogle /> Register with google</Button>
-
+                <Button
+                    onClick={handleGoogleSignUp}
+                    className="w-full rounded-2xl p-3 bg-gray-100 text-blue-500 flex items-center justify-center gap-2"
+                >
+                    <FaGoogle /> Register with Google
+                </Button>
             </div>
         </div>
     );

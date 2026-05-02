@@ -6,7 +6,7 @@ const ProductsPage = async() => {
     const products = await res.json();
     return (
         <div>
-            <h2 className='font-bold text-2xl mt-10'>All Products</h2>
+            <h2 className='font-bold text-2xl mt-10 mx-10'>All Products</h2>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-5 m-10'>
                 {products.map(product => <ProductCard key={product.id} product={product}></ProductCard>)}
             </div>

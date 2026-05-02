@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { FaSun } from 'react-icons/fa';
-import { FaUserLarge } from 'react-icons/fa6';
 
 const Navbar = () => {
     const { data: session, isPending } = authClient.useSession();

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import { FaStar } from 'react-icons/fa6';
 
 const ProductsDetailsPage = async ({ params }) => {
     const { id } = await params;
@@ -11,10 +12,8 @@ const ProductsDetailsPage = async ({ params }) => {
     return (
         <div className="px-6 md:px-16 py-10">
 
-            <div className="grid md:grid-cols-2 gap-10 items-center">
-
-                {/* Image */}
-                <div className="relative w-full h-[400px] rounded-xl overflow-hidden">
+            <div className="grid md:grid-cols-2 gap-10 items-center p-12 bg-amber-100 rounded-2xl">
+                <div className="relative w-full h-100 rounded-xl overflow-hidden">
                     <Image
                         src={product.image}
                         alt={product.name}
@@ -23,14 +22,12 @@ const ProductsDetailsPage = async ({ params }) => {
                     />
                 </div>
 
-                {/* Details */}
                 <div className="space-y-4">
-
                     <h1 className="text-3xl md:text-4xl font-bold">
                         {product.name}
                     </h1>
 
-                    <p className="text-gray-500">
+                    <p className="text-gray-500 font-bold">
                         Brand: {product.brand}
                     </p>
 
@@ -38,19 +35,19 @@ const ProductsDetailsPage = async ({ params }) => {
                         ${product.price}
                     </p>
 
-                    <p className="flex items-center gap-2">
-                         {product.rating}
+                    <p className="flex items-center gap-2 font-bold text-yellow-400">
+                        <FaStar></FaStar> {product.rating}
                     </p>
 
-                    <p>
-                        Category:{product.category}
+                    <p className="text-gray-600 font-bold">
+                        Category: {product.category}
                     </p>
 
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 font-semibold">
                         {product.description}
                     </p>
 
-                    <p className="text-sm">
+                    <p className="text-md font-bold">
                         Stock: {product.stock}
                     </p>
 
