@@ -12,7 +12,7 @@ const ProductsDetailsPage = async ({ params }) => {
     return (
         <div className="px-6 md:px-16 py-10">
 
-            <div className="grid md:grid-cols-2 gap-10 items-center p-12 bg-amber-100 rounded-2xl">
+            <div className="grid md:grid-cols-2 gap-10 items-center p-4 bg-amber-100 rounded-2xl">
                 <div className="relative w-full h-100 rounded-xl overflow-hidden">
                     <Image
                         src={product.image}
