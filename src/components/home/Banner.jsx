@@ -47,7 +47,7 @@ const Banner = () => {
 
                 <div className="w-full md:w-2/3 flex justify-center -mt-4 md:mt-0">
 
-                    <div className="w-120 mb-20 md:mb-0 md:w-170">
+                    <div className="w-120 mb-5 md:mb-0 md:w-170">
                         <Lottie animationData={animationData} loop />
                     </div>
 

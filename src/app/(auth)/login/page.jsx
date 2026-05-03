@@ -42,13 +42,13 @@ const LogInPage = () => {
 
     return (
         <div className="container mx-auto min-h-[80vh] flex justify-center items-center bg-slate-100">
-            <div className="p-8 rounded-2xl bg-white mt-10">
+            <div className="p-8 rounded-2xl bg-white my-6">
                 <h2 className="font-bold text-2xl text-center mb-5">
                     Login Your Account
                 </h2>
 
                 <Form
-                    className="flex w-96 flex-col gap-4"
+                    className="flex w-80 flex-col gap-4"
                     onSubmit={handleSubmit(handleLoginFunction)}
                 >
                     <TextField isRequired>

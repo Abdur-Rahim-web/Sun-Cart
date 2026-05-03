@@ -46,12 +46,12 @@ const RegisterPage = () => {
 
     return (
         <div className="container mx-auto min-h-[80vh] flex justify-center items-center bg-slate-100">
-            <div className="p-8 rounded-2xl bg-white my-10">
+            <div className="p-8 rounded-2xl bg-white my-6">
                 <h2 className="font-bold text-2xl text-center mb-5">
                     Register Your Account
                 </h2>
 
-                <Form className="flex w-96 flex-col gap-4" onSubmit={handleSubmit(handleRegisterFunction)}>
+                <Form className="flex w-80 flex-col gap-4" onSubmit={handleSubmit(handleRegisterFunction)}>
                     <TextField isRequired>
                         <Label>Name</Label>
                         <Input {...register("name", { required: "Name is required" })} />
